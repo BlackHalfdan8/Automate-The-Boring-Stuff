@@ -28,12 +28,11 @@ To explore the code in this repository, you can either clone it to your local ma
 
 The repository is organized into folders, each representing different chapters or sections of the book. The structure might look something like this:
 
-/
-├── Chapter_1/
+├── Chapter_1
 │   ├── exercise1.py
 │   ├── exercise2.py
 │   ├── ...
-├── Chapter_2/
+├── Chapter_2
 │   ├── exercise1.py
 │   ├── exercise2.py
 │   ├── ...
