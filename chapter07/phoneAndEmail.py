@@ -4,13 +4,13 @@
 import pyperclip, re
 
 phoneRegex = re.compile(r'''(
-    (\d{3}|\(d{3}\))?                   # area code
+    \b(\d{3}|\(\d{3}\))?                # area code
     (\s|-|\.)?                          # separator
     (\d{3})                             # first 3 digits
     (\s|-|\.)                           # separator
     (\d{4})                             # last 4 digits
     (\s*(ext|x|ext.)\s*(\d{2,5}))?      # extension
-    )''', re.VERBOSE)
+    \b)''', re.VERBOSE)
 
 # Create email regex.
 emailRegex = re.compile(r'''(
@@ -29,8 +29,11 @@ for groups in phoneRegex.findall(text):
     if groups[6] != '':
         phoneNum += ' x' + groups[6]
     matches.append(phoneNum)
-for groups in emailRegex.findall(text):
-    matches.append(groups)
+for match in emailRegex.findall(text):
+    matches.append(''.join(match))
+
+# Convert all items in matches to srings
+matches = [str(item) for item in matches]
 
 # Copy results to the clipboard.
 if len(matches) > 0:
