@@ -14,7 +14,7 @@ for quizNum in range(35):
     
     # Write out the header for the quiz.
     quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')
-    quizFile.write((' ' * 20) + f'State Capitals Quiz (Form{quizNum + 1})')
+    quizFile.write((' ' * 20) + f'State Capitals Quiz (Form {quizNum + 1})') # Added a whitespace between "Form" and the number.
     quizFile.write('\n\n')
     
     # Shuffle the order of the states.
@@ -22,7 +22,7 @@ for quizNum in range(35):
     random.shuffle(states)
     
     # Loop through all 50 states, making a question for each.
-    for questionNum in range(50):
+    for questionNum in range(len(states)): # Modified the loop to iterate through the length of states instead of a fixed range of 50. 
         
         # Get right and wrong answers.
         correctAnswer = capitals[states[questionNum]]
@@ -39,6 +39,6 @@ for quizNum in range(35):
         quizFile.write('\n')
             
         # Write the answer key to a file.
-        answerKeyFile.write(f"{questionNum + 1}. {'ABCD'[answerOptions.index(correctAnswer)]}")
+        answerKeyFile.write(f"{questionNum + 1}. {'ABCD'[answerOptions.index(correctAnswer)]}\n") # Added a newline at the end of each answer for better formatting in the answerKeyFiles.
     quizFile.close()
     answerKeyFile.close()
